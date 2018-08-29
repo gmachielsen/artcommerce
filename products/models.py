@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     FORMAAT_CHOICES = (
 	    ('X', 'Kies formaat'),
-        ('L', 'Groot'),
+        ('G', 'Groot'),
         ('M', 'Medium'),
-        ('S', 'Klein'),
+        ('K', 'Klein'),
     )
     
     ORIËNTATIE_CHOICES = (
@@ -60,3 +60,6 @@ class Product(models.Model):
     prijs =models.CharField(max_length=1, default= 'X', choices=PRIJS_CHOICES)  
     prijstype =models.CharField(max_length=1, default= 'X', choices=PRIJSTYPE_CHOICES) 
     stijl =models.CharField(max_length=1, default= 'X', choices=STIJL_CHOICES)
+    kunstenaar = models.CharField(max_length=100, null=True, blank=True)
+    def __str__(self):
+        return self.name
