@@ -1,0 +1,25 @@
+
+.searchbox {
+    background-color:red;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left;
+}
+
+
+input {
+    width: 100%;
+}
+
+.card-img-top img-fluid {
+    width: 100%;
+}

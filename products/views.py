@@ -15,25 +15,21 @@ def filter_product_list(request):
 
     products = Product.objects.all()
     
-
     if 'search' in request.GET:
         search = request.GET['search']
         
         query_by_name = Q(name__contains=search)
         query_by_description = Q(description__contains=search)
-        query_by_kunstenaar = Q(kunstenaar__contains=search)
-        
-        products = products.filter(query_by_name | query_by_description | query_by_kunstenaar)
+
+        products = products.filter(query_by_name | query_by_description)
 
     
     if request.GET['formaat'] != 'X':
         products = products.filter(formaat=request.GET['formaat'])
 
-
     if request.GET['oriëntatie'] != 'X':
         products = products.filter(oriëntatie=request.GET['oriëntatie'])
     
-
     if request.GET['techniek'] != 'X':
         products = products.filter(techniek=request.GET['techniek'])
     
@@ -46,10 +42,13 @@ def filter_product_list(request):
     if request.GET['stijl'] != 'X':
         products = products.filter(stijl=request.GET['stijl'])
     
-    if request.GET['stijl'] != 'X':
+    if request.GET['kunstenaar']:
         products = products.filter(kunstenaar=request.GET['kunstenaar'])
+        
+    if request.GET['thema'] != 'X':
+        products = products.filter(thema=request.GET['thema'])
 
-    search_form = ProductSearchForm()
+    search_form = ProductSearchForm(request.GET)
     return render(request, "products/product_list.html", {'products': products, 'search_form': search_form})
 
     

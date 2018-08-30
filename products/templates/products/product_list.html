@@ -1,15 +1,43 @@
 {% extends "base.html" %}
+{% load static %}
+
+    {% block head_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+    {% endblock head_style %}
 
 {% block content %}
-    <div class="container-fluid">
-    
-    <form method='get' action='{% url 'filter_product_list' %}'>
+    <section id="filters" class="column red relative">
+        <div class= "container-fluid">
+            <div class= "row">
+                <div class="col-sm-12 searchbox">
+            
+    <form method='get' action="{% url 'filter_product_list' %}">
          {{ search_form }}  
          <input type="submit" value="Search"/>
     </form>
-     
+    
+    <!--<form action="" method="post">-->
+    <!--    <div class="row">-->
+    <!--        <div class="col-sm-3" id="formaat" class="">{{ search_form.formaat }}</div>-->
+    <!--        <div class="col-sm-3" id="oriëntatie" class="">{{ search_form.oriëntatie }}</div>-->
+    <!--        <div class="col-sm-3" id="techniek" class="">{{ search_form.techniek }}</div>-->
+    <!--    </div>-->
+         
+    <!--    <div class="row">-->
+    <!--        <div class="col-sm-3 " id="formaat" class="">{{ search_form.formaat }}</div>-->
+    <!--        <div class="col-sm-3" id="oriëntatie" class="">{{ search_form.oriëntatie }}</div>-->
+    <!--        <div class="col-sm-3" id="techniek" class="">{{ search_form.techniek }}</div>-->
+    <!--    </div>-->
+    <!--    <input type="submit" value="Submit">-->
+    <!--</form>-->
+    
+    </div>
+    </div>
+    </div>
+     </div>
         
-        
+  </section>      
     <div class="row">
     {% for product in products %}
                     <div class="col-sm-4 col-lg-4 col-md-4">

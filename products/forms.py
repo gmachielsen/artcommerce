@@ -7,4 +7,6 @@ class ProductSearchForm(forms.ModelForm):
     
     class Meta:
         model=Product
-        fields=['search', 'formaat' ,'oriëntatie' ,'techniek' ,'prijs' ,'prijstype' ,'stijl']
+        fields=['search', 'formaat' ,'oriëntatie' ,'techniek' ,'prijs' ,'prijstype' ,'stijl', 'kunstenaar', 'thema']
+        
+        
