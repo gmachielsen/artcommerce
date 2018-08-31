@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
-from .forms import ProductSearchForm
+from .models import Product, ProductImages
+from .forms import ProductSearchForm, ProductSellerForm
 from django.db.models import Q
 
 # Create your views here.
@@ -54,6 +54,35 @@ def filter_product_list(request):
     
 def product_detail(request, id):
     product = get_object_or_404(Product, pk=id)
-    return render(request, "products/product_detail.html", {'product': product})
+    product_images = ProductImages.objects.filter(product=id)
+    return render(request, "products/product_detail.html", {'product': product, 'product_images':product_images})
+    
+
+def add_product(request):
+    if request.method=="POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+        else:
+            print(form.errors)
+    else:
+        form = ProductForm()
+    
+    return render(request, 'products/add_product.html', {'form':form})
+        
+        
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    
+    if request.method=="POST":
+        form = ProductSellerForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect(profile_seller)
+    else:
+        form = ProductSellerForm(instance=product)
+    
+    return render(request, "products/edit_product.html", {'product': product, 'form':form})
 
 

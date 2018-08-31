@@ -6,6 +6,7 @@ from django.contrib import auth
 from django.conf import settings
 import stripe
 from django.contrib import messages
+from products.models import Product
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -48,7 +49,6 @@ def register_as_seller(request):
         card_form = CardForm(request.POST)
         # If both forms are valid, we create the User and Profile in the Database
         if user_form.is_valid() and seller_form.is_valid() and card_form.is_valid():
-            print("In")
             # Save the User object to DB, by calling save directly on the Form.
             # Return the User object so that we can use it later to set the user of the Profile.
             user = user_form.save()
@@ -80,5 +80,25 @@ def register_as_seller(request):
         card_form = CardForm()
     return render(request, 'accounts/register_seller.html', { 'user_form': user_form, 'seller_form': seller_form , 'card_form': card_form, 'publishable': settings.STRIPE_PUBLISHABLE_KEY})
 
-
+def profile_seller(request):
+    products = Product.objects.filter(seller=request.user.seller)
+    
+    return render(request, 'accounts/profile_seller.html', {'products':products})
+    
+def subscribe(request):
+    
+    if request.method == "POST":
+        if request.user.seller:
+            
+            plan = request.POST['plan']
+    
+            subscription = stripe.Subscription.create(
+              customer = request.user.seller.stripe_id,
+              items=[{'plan': plan}],
+            )
+        return redirect('profile_seller')
+ 
+    else:
+        return render(request, 'accounts/subscribe.html')
+        
 

@@ -12,7 +12,7 @@
             <div class= "row">
                 <div class="col-sm-12 searchbox">
             
-    <form method='get' action="{% url 'filter_product_list' %}">
+    <form method='get' action="{% url 'filter_product_list' %}" enctype="multipart/form-data">
          {{ search_form }}  
          <input type="submit" value="Search"/>
     </form>

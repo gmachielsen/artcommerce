@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from accounts.models import Seller
 
 class Artist(models.Model):
     name = models.CharField(max_length=100)
@@ -77,11 +78,14 @@ class Product(models.Model):
         ('L', 'Ja'),
         ('Z', 'Nee'),
     )
- 
+    
+    seller = models.ForeignKey(Seller, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.TextField(default="Enter Description")
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     rent = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    lengthcm = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    widthcm= models.DecimalField(max_digits=6, decimal_places=2, default=0)
     image = models.ImageField(upload_to='product_images')
     formaat=models.CharField(max_length=1, default= 'X', choices=FORMAAT_CHOICES)
     oriëntatie = models.CharField(max_length=1, default= 'X', choices=ORIËNTATIE_CHOICES)
@@ -101,3 +105,5 @@ class Product(models.Model):
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, related_name="product_images", on_delete=models.CASCADE)
     image = models.ImageField()
+
+

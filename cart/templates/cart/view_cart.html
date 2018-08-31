@@ -6,7 +6,6 @@
         <tr>
             <th></th>    
             <th>Product</th>    
-            <th>Quantity</th>    
             <th>Price</th>
             <th>Total</th> 
             <th></th>
@@ -17,9 +16,7 @@
         <tr>
             <td><img width="100" height="100" src="{{MEDIA_URL}}{{item.product.image}}"/></td>    
             <td>{{ item.product.name }}</td>    
-            <td>{{ item.quantity}}</td>    
             <td>€{{ item.product.price }}</td>
-            <td>€{{ item.total}}</td>
             <td><form action="{% url 'remove_cart' %}" method="post">
               {% csrf_token %}
               <input type="hidden" name="id" value="{{item.product.id}}"/>

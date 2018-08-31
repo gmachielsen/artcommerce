@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+<H1>Profile</H1>
+
+
+<form method="POST" action="{% url 'subscribe' %}">
+    {% csrf_token %}
+    <input type="hidden" value="ART_GALLERY_ANNUAL" name="plan" />
+    <input type="submit" value="Annual €150" />
+</form>
+
+<form method="POST" action="{% url 'subscribe' %}">
+    {% csrf_token %}
+    <input type="hidden" value="ART_GALLERY_MONTHLY" name="plan" />
+    <input type="submit" value="Montly €20" />
+</form>
+
+
+
+
+<a href="{% url 'add_product' %}">Add Product</a>
+
+<h2>Your Products</h2>
+
+<div class="row">
+    {% for product in products %}
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <img src="{{MEDIA_URL}}{{product.image}}" alt="">
+            <div class="caption">
+                <h4 class="pull-right">€{{product.price}}</h4>
+                <h4><a href="#">{{product.name}}</a>
+                </h4>
+                <p>{{product.description | linebreaksbr }}</p>
+ 
+                <a href="{% url 'edit_product' product.id %}" class="btn btn-success">Aanpassen</a>
+
+                <p>{{product.brand}}</p>
+            </div>
+            <div class="ratings">
+                <p class="pull-right">{{product.reviews_received.all|length}} reviews</p>
+                <p>
+                    {% for star in product.stars %}
+                    <i class="fa fa-star"></i> {% endfor %} {% if product.needs_half_star %}
+                    <i class="fa fa-star-half"></i> {% endif %}
+
+                </p>
+            </div>
+        </div>
+    </div>
+    {% if forloop.counter|divisibleby:3 %}
+</div>
+<div class="row">
+    {% endif %} {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -25,20 +25,30 @@
     <!-- /.card -->
     <div class="col-sm-6 ">
       <div>
-        <h4> Prijs Kunstwerk €{{product.price}}</h4>
+        <div class=row>
+        <div="left"><h4> Prijs Kunstwerk</h4></div>
+        <div class="right"><h4> €{{product.price}}</h4></div>
         <h4> Betaalvorm {{product.get_prijstype_display}}</h4>
         <h4> Foormaat Kunstwerk {{product.get_formaat_display}}</h4>
         <h4> Orieëntatie Kunstwerk {{product.get_oriëntatie_display}}</h4>
         <h4> Gebruikte techniek {{product.get_techniek_display}}</h4>
         <h4> Stijl {{product.get_stijl_display}}</h4>
         <h4> Ingelijst {{product.get_lijst_display}}</h4>
+        <h4> Horizontale lengte in cm {{product.get_lengthcm_display}}</h4>
+        <h4> Verticale lengte in cm {{product.get_widthcm_display}}</h4>
       </div>
 
       <div>
+        <form action="{% url 'view_checkout' %}" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="id" value="{{product.id}}" />
+          <p><input class="btn btn-success" type="submit" value="Koop nu" /></p>
+        </form>
+
         <form action="{% url 'add_to_cart' %}" method="post">
           {% csrf_token %}
           <input type="hidden" name="id" value="{{product.id}}" />
-          <!--<p><input type="number" name="quantity" value="1"/></p>-->
+          <input type="hidden" name="quantity" value="1"/>
           <p><input class="btn btn-success" type="submit" value="Neem dit kunstwerk in huis" /></p>
         </form>
       </div>
@@ -48,5 +58,12 @@
 
 
   </div>
+  <div ='row'
+  <div class="col-sm-3">
+        {% for image in product_images %}
+            <img width="70%" class="card-img-top img-fluid" src="{{MEDIA_URL}}{{image.image}}" alt=""><br>
+        {% endfor %}
+      </div>
+    </div>
 </div>
 {% endblock content %}

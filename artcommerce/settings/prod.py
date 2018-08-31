@@ -1,11 +1,7 @@
 from .base import *
-import dj_database_url
+
 
 ALLOWED_HOSTS = ['ecommerce-leiden.herokuapp.com','ecommerce-gijsmachielsen.c9users.io']
-
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
 
 
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")

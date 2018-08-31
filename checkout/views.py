@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import OrderForm, PaymentForm
 from .models import OrderLineItem
 from products.models import Product
-from cart.utils import get_cart_items_and_total
+from cart.utils import get_cart_items
 from django.conf import settings
 import stripe
 from django.contrib import messages
