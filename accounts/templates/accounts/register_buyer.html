@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+
+{% block content %}
+  <h2>Sign up as a Customer</h2>
+  <form role="form" id="payment-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{ user_form | as_bootstrap }}
+    {{ buyer_form | as_bootstrap }}
+    
+    <button type="submit">Sign up</button>
+  </form>
+{% endblock %}

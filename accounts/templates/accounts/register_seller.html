@@ -2,6 +2,12 @@
 {% load static %}
 {% load bootstrap_tags %}
 
+{% block head_style %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/register_seller.css' %}" type="text/css" />
+{% endblock %}
+
+
 {% block head_js %}
   {{ block.super }}
   <script src="https://js.stripe.com/v2/" type="text/javascript"></script>

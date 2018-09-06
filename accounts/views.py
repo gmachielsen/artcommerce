@@ -38,8 +38,8 @@ def register_as_customer(request):
             return redirect('home')
     else:
         user_form = UserCreationForm()
-        customer_form = BuyerRegistrationForm()
-    return render(request, 'accounts/register.html', { 'user_form': user_form, 'user_type_form': customer_form })
+        buyer_form = BuyerRegistrationForm()
+    return render(request, 'accounts/register_buyer.html', { 'user_form': user_form, 'buyer_form': buyer_form  })
 
 def register_as_seller(request):
     if request.method == 'POST':

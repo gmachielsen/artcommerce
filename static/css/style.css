@@ -1,26 +1,17 @@
-.navbar navbar-masthead navbar-defaul {
-    background-color: #504a4a
-    width:100%;
+.artnav {
+    background-color: black;
 }
 
-
-body {
-    font-family: Arial;
-    padding-top: 100px;
+.menu {
+   background-color: red; 
 }
-
 footer {
     margin-top: 100px;
     padding-bottom: 0px;
     border-top: 1px solid #ededed;
     color: #A9A9A9;
-    width:100%;
 }
 
-/*footer{*/
-/*	background-color:#222222;*/
-/*    padding: 60px 0px;*/
-/*}*/
 
 footer ul{
     list-style:none;
@@ -56,7 +47,7 @@ footer ul li a:hover{
 .footer-top .fa{
     font-size:18px;
     color: #FFF;
-    padding-right:10px;
+   
     
 }
 
@@ -69,8 +60,8 @@ footer ul li a:hover{
     color:#7dabdb;
 }
 
-.social {
-    width: 100%;
+.footer-down {
+    
     background-color: black;
 }
 .copyright{
@@ -87,7 +78,5 @@ footer ul li a:hover{
     background-color: #fff;
 }
 
-.accountform {
-    padding-top: 20px;
-}
+
 

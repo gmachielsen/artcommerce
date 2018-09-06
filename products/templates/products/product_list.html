@@ -7,27 +7,143 @@
     {% endblock head_style %}
 
 {% block content %}
-    <section id="filters" class="column red relative">
-        <div class= "container-fluid">
-            <div class= "row">
-                <div class="col-sm-12 searchbox">
+    <!--<section id="filters" class="column red relative">-->
+    <!--    <div class= "container-fluid">-->
+    <!--        <div class= "row">-->
+    <!--            <div class="col-sm-12 searchbox">-->
             
-    <form method='get' action="{% url 'filter_product_list' %}" enctype="multipart/form-data">
-         {{ search_form }}  
-         <input type="submit" value="Search"/>
-    </form>
+    <!--<form method='get' action="{% url 'filter_product_list' %}" enctype="multipart/form-data">-->
+    <!--     {{ search_form }}  -->
+    <!--     <input type="submit" value="Search"/>-->
+    <!--</form>-->
     
+    
+    <section id="filters" class="column red relative">
+        <form method="get" action="{% url 'filter_product_list' %}" id="filter"  enctype="multipart/form-data">
+            
+                        
+        <section class="container menu">
+            <section class="row">
+                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    
+                    <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Stijl:</h3>
+                            <select name="stijlen"><option value={{ search_form.stijl }}</select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Oriëntatie:</h3>
+                            <select name="orientaties"><option value={{ search_form.oriëntatie }}</option></select></section>
+                    </section>
+                    <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Techniek:</h3>
+                            <select name="tecjniek"><option value={{ search_form.techniek }}</option></select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Kunstenaar:</h3>
+                            <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>
+                    </section>
+                    
+                </section>
+                
+                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    
+                   <section class="row">
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Thema:</h3>
+                            <select name="Thema"><option value={{ search_form.thema }}</select></section>
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3>Formaat:</h3>
+                            <select name="Formaat"><option value={{ search_form.formaat }}</option></select></section>
+                    </section>
+                    <section class="row">
+                        <!--<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                        <!--    <h3>Zoek op:</h3>-->
+                        <!--    <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>-->
+                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <h3 class="nomargin">Zoek op:</h3>
+                            <div class="filter-search">
+                                <input type="text"  placeholder="Titel, nummer, etc..." class="{{ search_form.search }}"/>
+                                <ul class="custom-autocomplete"></ul>
+                                <img src="https://kunstuitleen.nl/wp-content/themes/kunstuitleen/images/thuis-filter-search.svg" alt="Zoeken >" class="filter-submit" />
+                            </div>
+                    </section>
+                    
+                </section>
+            </section>
+                    </section>
+        </form>
+    </section>
+    
+    
+    <hr>
+    
+    <!--<section id="filters" class="column red relative">-->
+    <!--    <form method="get" action="{% url 'filter_product_list' %}" id="filter"  enctype="multipart/form-data">-->
+            
+                        
+    <!--    <section class="container">-->
+    <!--        <section class="row">-->
+    <!--            <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                    
+    <!--                <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3 class="nomargin">Zoek op:</h3>-->
+    <!--                        <div class="filter-search">-->
+    <!--                            <input type="text" name="c" id="c" value="" placeholder="Titel, nummer, etc..." />-->
+    <!--                            <ul class="custom-autocomplete"></ul>-->
+    <!--                            <img src="https://kunstuitleen.nl/wp-content/themes/kunstuitleen/images/thuis-filter-search.svg" alt="Zoeken >" class="filter-submit" />-->
+    <!--                        </div>-->
+    <!--                    </section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filter-kunstenaars">-->
+    <!--                        <br class="clear hidden-sm hidden-md hidden-lg" />-->
+    <!--                        <h3 class="nomargin">Kunstenaars:</h3>-->
+    <!--                        <select name="kunstenaars">-->
+    <!--                            <option value="">Alle kunstenaars</option>-->
+    <!--                        </select>-->
+    <!--                    </section>-->
+    <!--                </section>-->
+    <!--                <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Stijl:</h3>-->
+    <!--                        <select name="stijlen"><option value="">Kies een stijl</option><option value="abstract">Abstract</option><option value="figuratief">Figuratief</option><option value="realistisch">Realistisch</option></select>                        </section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Oriëntatie:</h3>-->
+    <!--                        <select name="orientaties"><option value="">Kies een orientatie</option><option value="liggend">Liggend</option><option value="staand">Staand</option><option value="vierkant">Vierkant</option></select>                        </section>-->
+    <!--                </section>-->
+                    
+    <!--            </section>-->
+                
+    <!--            <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                    
+    <!--                <h3 class="nomargin">Maandbedrag:</h3>-->
+    <!--                <select name="maandbedragen"><option value={{ search_form.prijs }}</select>                    -->
+    <!--                <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Formaat:</h3>-->
+    <!--                        <select name="formaten"><option value="">Kies een formaat</option><option value="groot">Groot</option><option value="klein">Klein</option><option value="middel">Middel</option></select>                        </section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Techniek:</h3>-->
+    <!--                        <select name="technieken"><option value="">Kies een techniek</option><option value="fotografie">Fotografie</option><option value="grafiek">Grafiek</option><option value="origineel">Origineel</option><option value="sculptuur">Sculptuur</option></select>                        </section>-->
+    <!--                </section>-->
+                    
+    <!--            </section>-->
+    <!--        </section>-->
+    <!--                </section>-->
+    <!--    </form>-->
+    <!--</section>-->
     <!--<form action="" method="post">-->
     <!--    <div class="row">-->
+    <!--        <div class="col-sm-3" id="formaat" class="">{{ search_form.search }}</div>-->
     <!--        <div class="col-sm-3" id="formaat" class="">{{ search_form.formaat }}</div>-->
     <!--        <div class="col-sm-3" id="oriëntatie" class="">{{ search_form.oriëntatie }}</div>-->
     <!--        <div class="col-sm-3" id="techniek" class="">{{ search_form.techniek }}</div>-->
     <!--    </div>-->
          
     <!--    <div class="row">-->
-    <!--        <div class="col-sm-3 " id="formaat" class="">{{ search_form.formaat }}</div>-->
-    <!--        <div class="col-sm-3" id="oriëntatie" class="">{{ search_form.oriëntatie }}</div>-->
-    <!--        <div class="col-sm-3" id="techniek" class="">{{ search_form.techniek }}</div>-->
+    <!--        <div class="col-sm-3 " id="formaat" class="">{{ search_form.prijs }}</div>-->
+    <!--        <div class="col-sm-3" id="oriëntatie" class="">{{ search_form.stijl }}</div>-->
+    <!--        <div class="col-sm-3" id="techniek" class="">{{ search_form.kunstenaar }}</div>-->
+                <!--<div class="col-sm-3" id="techniek" class="">{{ search_form.thema }}</div>-->-->
     <!--    </div>-->
     <!--    <input type="submit" value="Submit">-->
     <!--</form>-->
@@ -70,5 +186,5 @@
     {% endfor %}
     </div>
     </div>
-    
+<a class="backtotop" onclick="$('html, body').animate({ scrollTop: 0 });">Terug naar boven</a>
 {% endblock content %}

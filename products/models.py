@@ -16,7 +16,7 @@ class Product(models.Model):
     FORMAAT_CHOICES = (
 	    ('X', 'Kies formaat'),
         ('G', 'Groot'),
-        ('M', 'Medium'),
+        ('M', 'Normaal'),
         ('K', 'Klein'),
     )
     
@@ -48,7 +48,7 @@ class Product(models.Model):
     )
 	
     PRIJSTYPE_CHOICES = (
-    	('X', 'Kies prijstype'),
+    	('X', 'Kies een prijstype'),
     	('B', 'Geen voorkeur'),	
     	('K', 'Koop'),
     	('H', 'Huur'),
@@ -56,11 +56,11 @@ class Product(models.Model):
 
     STIJL_CHOICES = (
     	('X', 'Kies jouw kunststijl'),
-    	('R', 'Realistisch'),	
-    	('I', 'Imprestionistisch'),
+    	('R', 'Realistisch'),
+    	('I', 'Impresionistisch'),
+    	('G', 'Gestileerd'),
     	('A', 'Abstract'),
-    	('E', 'Expressionistisch'),
-    	('F', 'Figuratief'),
+    	
     )
     
     THEME_CHOICES = (

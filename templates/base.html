@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ArtGallery</title>
+
     {% block head_style %}
     <link rel="stylesheet" href="https://bootswatch.com/3/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
@@ -16,9 +17,7 @@
     <!------ Include the above in your HEAD tag ---------->
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> {% endblock head_style %} 
-    
-    {% block head_js %}
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> {% endblock head_style %} {% block head_js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,65 +26,58 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-    <!-- Fixed masthead -->
-    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <nav class="artnav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">ArtGallery</a>
-            </div>
+            <a class="navbar-brand" href="/">ArtGallery</a>
+        </div>
 
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    {% if user.is_authenticated %}
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %} 
+                    {% if user.seller %}
                     <li><a href="{% url 'profile_seller' %}"><i class="fa fa-user"></i> Profile</a></li>
-                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
-                    {% else %}
-                    <li><a href="{% url 'register_as_customer' %}"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-                    <li><a href="{% url 'register_as_seller' %}"><i class="fa fa-user-plus"></i> Register Seller</a></li>
-                    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
                     {% endif %}
-                    <li><a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart 
-                    {% if number_of_items_in_cart >= 1 %}
-                        <label class="badge badge-light">{{ number_of_items_in_cart }}</label></a>
+                    {% if user.buyer %}
+                    <label class="badge badge-light">{{ number_of_items_in_cart }}</label></a>
                     {% endif %}
-                    </li>
-                </ul>
-            </div>
-            
-            <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-center">
-
-                <li><a href="#">Voor bedrijven</a></li>
-
-
-                <li><a href="#">Voor particulieren</a></li>
+                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'register_as_customer' %}"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                <li><a href="{% url 'register_as_seller' %}"><i class="fa fa-user-plus"></i> Register Seller</a></li>
+                <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
+                {% endif %}
+                <!--<li><a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart -->
+                <!--    {% if number_of_items_in_cart >= 1 %}-->
+                <!--        <label class="badge badge-light">{{ number_of_items_in_cart }}</label></a> {% endif %}-->
 
 
-                <li><a href="#">Collectie</a></li>
+                <!--    <h1>Seller</h1>-->
+                <!--    <li><a href="{% url 'register_as_customer' %}"><i class="fa fa-user-plus"></i> Register Customer</a></li>-->
+                <!--    <li><a href="{% url 'register_as_seller' %}"><i class="fa fa-user-plus"></i> Register Seller</a></li>-->
+                <!--    <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>-->
+                 
 
-
-                <li><a href="#">Kunstenaars</a></li>
-
-
-                <li><a href="#">Over ArtGallery</a></li>
-
-
-                <li><a href="#">Contact</a></li>
-
-
+                <!--</li>-->
             </ul>
+        </div>
 
-</div>
-</div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-center">
+                <li><a href="#">Voor bedrijven</a></li>
+                <li><a href="#">Voor particulieren</a></li>
+                <li><a href="#">Collectie</a></li>
+                <li><a href="#">Kunstenaars</a></li>
+                <li><a href="#">Over ArtGallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-
 
 
     {% if messages %}
@@ -109,43 +101,15 @@
 -->
 
     <footer>
-        <!-- <div class="container" style="border-top:1px solid grey;">-->
-        <!--    <div class="row text-center">   -->
-        <!--        <div class="col-sm-12 col-sm-offset-0">-->
-        <!--            <ul class="menu">-->
-        <!--                <li>-->
-        <!--                    <a href="#">Home</a>-->
-        <!--                </li>-->
-
-        <!--                <li>-->
-        <!--                    <a href="#">About</a>-->
-        <!--                </li>-->
-
-        <!--                <li>-->
-        <!--                    <a href="#">Blog</a>-->
-        <!--                </li>-->
-
-        <!--                <li>-->
-        <!--                    <a href="#">Gallery</a>-->
-        <!--                </li>-->
-
-        <!--                <li>-->
-        <!--                    <a href="#">Contact</a>-->
-        <!--                </li>-->
-        <!--            </ul>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-
         <div class="footer-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="col-sm-2 col-xs-12 text-center">
-                            <a href="#">Voor bedrijven</a>
+                            <a href="#">bedrijven</a>
                         </div>
                         <div class="col-sm-2 col-xs-12 text-center">
-                            <a href="#">Voor particulieren</a>
+                            <a href="#">particulieren</a>
                         </div>
                         <div class="col-sm-2 col-xs-12 text-center">
                             <a href="#">Collectie</a>
@@ -164,35 +128,39 @@
                 </div>
             </div>
         </div>
-        <div class="social">
-            <div class="row text-center">
-                <div class="col-sm-12 col-sm-offset-0">
-                    <ul class="menu">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-                        </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-                        </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
-                        </li>
+        <div class="footer-top">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <ul class="menu">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-whatsapp fa-2x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-pinterest fa-2x"></i></a>
-                        </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                            </li>
 
-                    </ul>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-whatsapp fa-2x"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest fa-2x"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
     </footer>
+
 
 
     <div class="copyright">
@@ -201,7 +169,7 @@
             <div class="row text-center">
                 <p>Copyright © 2017 All rights reserved</p>
             </div>
-</div>
+        </div>
 </body>
 
 </html>

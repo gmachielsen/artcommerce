@@ -85,4 +85,10 @@ def edit_product(request, id):
     
     return render(request, "products/edit_product.html", {'product': product, 'form':form})
 
-
+# def update_product(form):
+#     # Update the DB with the differences
+#     if form.is_valid():
+#       product = form.save()
+#         return redirect("profile_seller") 
+#     else:
+#           return render(request, "products/edit_product.html", {'product': product, 'form':form})
