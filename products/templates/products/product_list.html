@@ -16,64 +16,122 @@
     <!--     {{ search_form }}  -->
     <!--     <input type="submit" value="Search"/>-->
     <!--</form>-->
-    
+    <section class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>Collectie</h1>
+            </div>
+        </div>
+    </section>
     
     <section id="filters" class="column red relative">
         <form method="get" action="{% url 'filter_product_list' %}" id="filter"  enctype="multipart/form-data">
             
                         
-        <section class="container menu">
-            <section class="row">
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <!--    <section class="container menu">-->
+    <!--        <section class="row">-->
+    <!--            <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
                     
-                    <section class="row">
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Stijl:</h3>
-                            <select name="stijlen"><option value={{ search_form.stijl }}</select></section>
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Oriëntatie:</h3>
-                            <select name="orientaties"><option value={{ search_form.oriëntatie }}</option></select></section>
-                    </section>
-                    <section class="row">
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Techniek:</h3>
-                            <select name="tecjniek"><option value={{ search_form.techniek }}</option></select></section>
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Kunstenaar:</h3>
-                            <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>
-                    </section>
+    <!--                <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Stijl:</h3>-->
+    <!--                        <select name="stijlen"><option value={{ search_form.stijl }}</select></section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Oriëntatie:</h3>-->
+    <!--                        <select name="orientaties"><option value={{ search_form.oriëntatie }}</option></select></section>-->
+    <!--                </section>-->
+    <!--                <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Techniek:</h3>-->
+    <!--                        <select name="tecjniek"><option value={{ search_form.techniek }}</option></select></section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Kunstenaar:</h3>-->
+    <!--                        <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>-->
+    <!--                </section>-->
                     
-                </section>
+    <!--            </section>-->
                 
-                <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <!--            <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
                     
-                   <section class="row">
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Thema:</h3>
-                            <select name="Thema"><option value={{ search_form.thema }}</select></section>
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3>Formaat:</h3>
-                            <select name="Formaat"><option value={{ search_form.formaat }}</option></select></section>
-                    </section>
-                    <section class="row">
+    <!--               <section class="row">-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Thema:</h3>-->
+    <!--                        <select name="Thema"><option value={{ search_form.thema }}</select></section>-->
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3>Formaat:</h3>-->
+    <!--                        <select name="Formaat"><option value={{ search_form.formaat }}</option></select></section>-->
+    <!--                </section>-->
+    <!--                <section class="row">-->
                         <!--<section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
                         <!--    <h3>Zoek op:</h3>-->
                         <!--    <select name="kunstenaar"><option value={{ search_form.kunstenaar }}</option></select></section>-->
-                        <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            <h3 class="nomargin">Zoek op:</h3>
-                            <div class="filter-search">
-                                <input type="text"  placeholder="Titel, nummer, etc..." class="{{ search_form.search }}"/>
-                                <ul class="custom-autocomplete"></ul>
-                                <img src="https://kunstuitleen.nl/wp-content/themes/kunstuitleen/images/thuis-filter-search.svg" alt="Zoeken >" class="filter-submit" />
-                            </div>
-                    </section>
+    <!--                    <section class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+    <!--                        <h3 class="nomargin">Zoek op:</h3>-->
+    <!--                        <div class="filter-search">-->
+    <!--                            <input type="text"  placeholder="Titel, nummer, etc..." class="{{ search_form.search }}"/>-->
+    <!--                            <ul class="custom-autocomplete"></ul>-->
+    <!--                            <img src="https://kunstuitleen.nl/wp-content/themes/kunstuitleen/images/thuis-filter-search.svg" alt="Zoeken >" class="filter-submit" />-->
+    <!--                        </div>-->
+    <!--                </section>-->
                     
-                </section>
-            </section>
-                    </section>
-        </form>
-    </section>
-    
+    <!--            </section>-->
+    <!--        </section>-->
+    <!--                </section>-->
+    <!--    </form>-->
+    <!--</section>-->
+    <nav
+  style="height: 144px; "class="filter-navbar ">
+                    <div class="categories-wrapper">
+                        <div class="categories-container">
+                            <ul class="categories container" data-filter="type">
+                                <li class="active">
+                                    <a href="#all">All</a>
+                                </li>
+                                <li>
+                                    <a href="#big-bang">Big Bang</a>
+                                </li>
+                                <li>
+                                    <a href="#poly">poly</a>
+                                </li>
+                                <li>
+                                    <a href="#sacred-geometry">Sacred Geometry</a>
+                                </li>
+                            </ul>
+                            <ul class="categories container" data-filter="tag">
+                                <li class="active">
+                                    <a href="#all">All</a>
+                                </li>
+                                <li>
+                                    <a href="#circle">circle</a>
+                                </li>
+                                <li>
+                                    <a href="#fillscreen">Fillscreen</a>
+                                </li>
+                                <li>
+                                    <a href="#hexagon">Hexagon</a>
+                                </li>
+                            </ul>
+                            <ul class="categories container" data-filter="variant">
+                                <li>
+                                    <select name="size">
+                                        <option selected value="all">size</option>
+                                        <option value="small">small</option>
+                                        <option value="medium">medium</option>
+                                        <option value="large">large</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <select name="color">
+                                        <option selected value="all">color</option>
+                                        <option value="red">red</option>
+                                        <option value="white">white</option>
+                                        <option value="blue">blue</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
     
     <hr>
     
